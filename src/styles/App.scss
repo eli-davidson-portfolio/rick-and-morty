@@ -1,0 +1,9 @@
+$primary: #B00020;
+$secondary: adjust-hue($primary, 120deg);
+$third: adjust-hue($primary, -120deg);
+
+.App {
+  text-align: center;
+  background-color: $primary;
+  color: $third;
+}
