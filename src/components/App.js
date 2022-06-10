@@ -1,14 +1,14 @@
 import React, {useState, useEffect, Component} from 'react';
 import '../styles/App.scss';
 import {getCharactors, getLocations, getEpisodes} from "../classes/apiEndpoints"
-import { Character } from '../classes/Character';
+import CharacterCard from './Character';
 
 function App() {
-  const [id, setID] = useState('')
   const [charactersInfo, setCharactersInfo] = useState({})
   const [characterCount, setCharacterCount] = useState(0)
   const [characterPageCount, setCharacterPageCount] = useState(0)
   const [currentCharacters, setCurrentCharacters] = useState([])
+  const [characterCards, setCharacterCards] = useState([])
 
   const getCharacterInfo = async () => {
     await getCharactors()
@@ -42,21 +42,19 @@ function App() {
   useEffect(() => {
   console.log("Current Characters did update")
   console.log("characters: ", currentCharacters)
-  createCharacterObjects()
+  createCharacterCards()
   }, [currentCharacters])
 
-  const createCharacterObjects = () => {
-    const characterObjects = currentCharacters.map(character => {
-      console.log(character)
-      return new Character(character)
+  const createCharacterCards = () => {
+    const characterCards = currentCharacters.map(character => {
+      return <CharacterCard key={character.id} character={character} />
     })
-    console.log(characterObjects)
+    setCharacterCards(characterCards)
   }
   
-
   return (
     <div className="App">
-      <p>App with id:{id}</p>
+      {characterCards}
     </div>
   );
 }
