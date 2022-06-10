@@ -1,7 +1,10 @@
-const getCharacters = async (charactersIds = "") => {
+const getCharacters = async (charactersIds = "", search = "") => {
     let url = `https://rickandmortyapi.com/api/character`
     if (charactersIds) {
         url = `${url}/${charactersIds}`
+    } 
+    if (search) {
+        url = `${url}/?${search}`
     }
    return await fetch(url, {
     method: 'GET',

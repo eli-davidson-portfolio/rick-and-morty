@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Character.scss'
 
 export function Character(props) { 
@@ -44,30 +45,31 @@ export function Character(props) {
     }
  
   return ( 
-    <div className="Character"> 
-      <div className='Character__image'>
-        <img src={character.image} alt={character.name}/>
-      </div>
-      {character.id && <div className='Character__information'>
-        <div className='Character__information__left'>
-            <p>id:{character.id}</p> 
-            <p>name:{character.name}</p>
-            <p>created:{character.created}</p> 
-            <p>episodes:{character.episode.length}</p> 
-            <p>gender:{character.gender}</p> 
+    <Link to={`/characters/${character.id}`}>
+
+      <div className="Character"> 
+        <div className='Character__image'>
+          <img src={character.image} alt={character.name}/>
         </div>
-        <div className='Character__information__right'>
-            <p>location name:{location.name}</p> 
-            <p>location id:{location.id}</p> 
-            <p>origin:{origin.name}</p>
-            <p>origin id:{origin.id}</p> 
-            <p>species:{character.species}</p>
-            <p>type:{character.type}</p> 
-        </div>
-       
- 
-      </div>}
-    </div> 
+        {character.id && <div className='Character__information'>
+          <div className='Character__information__left'>
+              <p>id:{character.id}</p> 
+              <p>name:{character.name}</p>
+              <p>created:{character.created}</p> 
+              <p>episodes:{character.episode.length}</p> 
+              <p>gender:{character.gender}</p> 
+          </div>
+          <div className='Character__information__right'>
+              <p>location name:{location.name}</p> 
+              <p>location id:{location.id}</p> 
+              <p>origin:{origin.name}</p>
+              <p>origin id:{origin.id}</p> 
+              <p>species:{character.species}</p>
+              <p>type:{character.type}</p> 
+          </div>
+        </div>}
+      </div> 
+    </Link>
   ); 
 } 
  

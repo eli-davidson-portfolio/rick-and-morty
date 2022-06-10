@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import {getCharacters} from "../classes/apiEndpoints"
 import {Character} from '../components/Character';
+import {FilterBar} from '../components/FilterBar'
 import '../styles/Characters.scss';
 
 export function Characters() {
@@ -10,13 +11,10 @@ export function Characters() {
   const [characterPageCount, setCharacterPageCount] = useState(0)
   const [currentCharacters, setCurrentCharacters] = useState([])
   const [characterCards, setCharacterCards] = useState([])
-
-const {id} = useParams()
-
-console.log(id)
+  const [search, setSearch] = useState('')
 
   const getCharacterInfo = async () => {
-    await getCharacters()
+    await getCharacters(null, search)
     .then(result => {
       setCharactersInfo(result.info)
       setCurrentCharacters(result.results)
@@ -37,6 +35,10 @@ console.log(id)
     createCharacterCards()
   }, [currentCharacters])
 
+  useEffect(() => {
+    getCharacterInfo()
+  }, [search])
+
   const createCharacterCards = () => {
     const characterCards = currentCharacters.map(character => {
       return <Character key={character.id} character={character} />
@@ -44,9 +46,16 @@ console.log(id)
     setCharacterCards(characterCards)
   }
 
+  const handleSearch = (search) => {
+    setSearch(search)
+  }
+
   return (
-    <div className="Characters">
-        {characterCards}
-    </div>
+      <>
+        <FilterBar handleSearch={handleSearch}/>
+        <div className="Characters">
+            {characterCards}
+        </div>
+      </>
   )
 }
