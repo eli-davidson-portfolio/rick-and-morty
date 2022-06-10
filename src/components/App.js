@@ -1,6 +1,6 @@
 import React, {useState, useEffect, Component} from 'react';
 import '../styles/App.scss';
-import {getCharactors, getLocations, getEpisodes} from "../classes/apiEndpoints"
+import {getCharacters, getLocations, getEpisodes} from "../classes/apiEndpoints"
 import {Character} from './Character';
 import {Location} from './Location';
 import {Episode} from './Episode'
@@ -25,7 +25,7 @@ function App() {
   const [episodeCards, setEpisodeCards] = useState([])
 
   const getCharacterInfo = async () => {
-    await getCharactors()
+    await getCharacters()
     .then(result => {
       setCharactersInfo(result.info)
       setCurrentCharacters(result.results)
@@ -52,9 +52,9 @@ function App() {
   }
 
   useEffect(() => {
-    getCharacterInfo()
-    getLocationInfo()
-    getEpisodeInfo()
+   // getCharacterInfo()
+  //  getLocationInfo()
+   getEpisodeInfo()
     return(() => {
     })
   }, [])
@@ -109,8 +109,8 @@ function App() {
   
   return (
     <div className="App">
-      {characterCards}
-      {locationCards}
+      {/* {characterCards} */}
+      {/* {locationCards} */}
       {episodeCards}
     </div>
   );
