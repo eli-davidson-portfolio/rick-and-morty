@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import '../styles/CharacterCard.scss'
-function CharacterCard(props) { 
+import '../styles/Character.scss'
+
+export function Character(props) { 
   const [character, setCharacter] = useState({})
   const [location, setLocation] = useState({})
    const [origin, setOrigin] = useState({})
@@ -74,4 +75,4 @@ function CharacterCard(props) {
   ); 
 } 
  
-export default CharacterCard; 
+
