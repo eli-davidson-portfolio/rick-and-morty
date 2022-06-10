@@ -47,8 +47,6 @@ export function Episode(props) {
   }, [currentCharacters])
 
   const getCharacterInfo = async (charactersIds) => {
-    console.log(id)
-    console.log(charactersIds)
     await getCharacters(charactersIds)
     .then(result => {
       // setCharactersInfo(result.info)

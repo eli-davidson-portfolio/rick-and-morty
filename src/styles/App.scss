@@ -3,6 +3,8 @@ $secondary: adjust-hue($primary, 120deg);
 $third: adjust-hue($primary, -120deg);
 
 .App {
+  overflow-y: hidden;
+  overflow-x: auto;
   text-align: center;
   background-color: $primary;
   color: $third;

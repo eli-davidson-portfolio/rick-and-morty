@@ -4,7 +4,7 @@ import '../styles/Character.scss'
 export function Character(props) { 
   const [character, setCharacter] = useState({})
   const [location, setLocation] = useState({})
-   const [origin, setOrigin] = useState({})
+  const [origin, setOrigin] = useState({})
 
   useEffect(() => { 
     setCharacter(props.character)
