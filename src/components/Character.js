@@ -7,17 +7,13 @@ export function Character(props) {
    const [origin, setOrigin] = useState({})
 
   useEffect(() => { 
-    console.log("CharacterCard did mount") 
     setCharacter(props.character)
  
     return(() => { 
-    console.log("CharacterCard will unmount") 
     }) 
   }, []) 
  
     useEffect(() => { 
-      console.log("CharacterCard did update") 
-      console.log(character)
       character.id && parseLocation()
       character.id && parseOrigin()
  

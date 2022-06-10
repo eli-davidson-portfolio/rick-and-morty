@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import '../styles/Location.scss'
 
 export function Location(props) { 
-  console.log("props:", props)
   const {
   created,
   dimension,
@@ -14,10 +13,8 @@ export function Location(props) {
   } = props.location
  
   useEffect(() => { 
-    console.log("Location did mount") 
  
     return(() => { 
-    console.log("Location will unmount") 
     }) 
   }, []) 
   

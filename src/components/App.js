@@ -3,6 +3,7 @@ import '../styles/App.scss';
 import {getCharactors, getLocations, getEpisodes} from "../classes/apiEndpoints"
 import {Character} from './Character';
 import {Location} from './Location';
+import {Episode} from './Episode'
 
 function App() {
   const [charactersInfo, setCharactersInfo] = useState({})
@@ -17,6 +18,12 @@ function App() {
   const [currentLocations, setCurrentLocations] = useState([])
   const [locationCards, setLocationCards] = useState([])
 
+  const [episodeInfo, setEpisodeInfo] = useState({})
+  const [episodeCount, setEpisodeCount] = useState(0)
+  const [episodePageCount, setEpisodePageCount] = useState(0)
+  const [currentEpisodes, setCurrentEpisodes] = useState([])
+  const [episodeCards, setEpisodeCards] = useState([])
+
   const getCharacterInfo = async () => {
     await getCharactors()
     .then(result => {
@@ -29,9 +36,17 @@ function App() {
   const getLocationInfo = async () => {
     await getLocations()
     .then(result => {
-      console.log(result)
       setLocationInfo(result.info)
       setCurrentLocations(result.results)
+    })
+    .catch(error => console.log('error', error));
+  }
+
+  const getEpisodeInfo = async () => {
+    await getEpisodes()
+    .then(result => {
+      setEpisodeInfo(result.info)
+      setCurrentEpisodes(result.results)
     })
     .catch(error => console.log('error', error));
   }
@@ -39,48 +54,37 @@ function App() {
   useEffect(() => {
     getCharacterInfo()
     getLocationInfo()
+    getEpisodeInfo()
     return(() => {
-    console.log("App will unmount ")
     })
   }, [])
 
   useEffect(() => {
-  console.log("Characters info did update")
-
   setCharacterCount(charactersInfo.count)
   setCharacterPageCount(charactersInfo.pages)
   }, [charactersInfo])
 
   useEffect(() => {
-    console.log("location info did update")
-
-    setLocationCount(locationInfo.count)
-    setLocationPageCount(locationInfo.pages)
+  setLocationCount(locationInfo.count)
+  setLocationPageCount(locationInfo.pages)
   }, [locationInfo])
 
   useEffect(() => {
-  console.log("Character Count did update")
-  console.log("Character Count: ", characterCount)
-  console.log("Pages: ",characterPageCount)
-  }, [characterCount])
+  setEpisodeCount(episodeInfo.count)
+  setEpisodePageCount(episodeInfo.pages)
+  }, [episodeInfo])
 
   useEffect(() => {
-  console.log("location Count did update")
-  console.log("location Count: ", locationCount)
-  console.log("Pages: ",locationPageCount)
-  }, [locationCount])
-
-  useEffect(() => {
-  console.log("Current Characters did update")
-  console.log("characters: ", currentCharacters)
   createCharacterCards()
   }, [currentCharacters])
 
   useEffect(() => {
-    console.log("Current locations did update")
-    console.log("locations: ", currentLocations)
     createLocationCards()
   }, [currentLocations])
+
+  useEffect(() => {
+    createEpisodeCards()
+  }, [currentEpisodes])
 
   const createCharacterCards = () => {
     const characterCards = currentCharacters.map(character => {
@@ -95,11 +99,19 @@ function App() {
     })
     setLocationCards(locationCards)
   }
+
+  const createEpisodeCards = () => {
+    const episodeCards = currentEpisodes.map(episode => {
+      return <Episode key={episode.id} episode={episode} />
+    })
+    setEpisodeCards(episodeCards)
+  }
   
   return (
     <div className="App">
-      {/* {characterCards} */}
+      {characterCards}
       {locationCards}
+      {episodeCards}
     </div>
   );
 }
