@@ -1,17 +1,19 @@
 import React, {useState, useEffect, Component} from 'react';
+import {
+  Switch,
+  Route,
+  Link,
+  Routes,
+  NavLink
+} from "react-router-dom";
 import '../styles/App.scss';
 import {getCharacters, getLocations, getEpisodes} from "../classes/apiEndpoints"
+import { Characters } from '../views/Characters';
 import {Character} from './Character';
 import {Location} from './Location';
 import {Episode} from './Episode'
 
 function App() {
-  const [charactersInfo, setCharactersInfo] = useState({})
-  const [characterCount, setCharacterCount] = useState(0)
-  const [characterPageCount, setCharacterPageCount] = useState(0)
-  const [currentCharacters, setCurrentCharacters] = useState([])
-  const [characterCards, setCharacterCards] = useState([])
-
   const [locationInfo, setLocationInfo] = useState({})
   const [locationCount, setLocationCount] = useState(0)
   const [locationPageCount, setLocationPageCount] = useState(0)
@@ -24,14 +26,7 @@ function App() {
   const [currentEpisodes, setCurrentEpisodes] = useState([])
   const [episodeCards, setEpisodeCards] = useState([])
 
-  const getCharacterInfo = async () => {
-    await getCharacters()
-    .then(result => {
-      setCharactersInfo(result.info)
-      setCurrentCharacters(result.results)
-    })
-    .catch(error => console.log('error', error));
-  }
+
 
   const getLocationInfo = async () => {
     await getLocations()
@@ -54,15 +49,10 @@ function App() {
   useEffect(() => {
    // getCharacterInfo()
   //  getLocationInfo()
-   getEpisodeInfo()
+  // getEpisodeInfo()
     return(() => {
     })
   }, [])
-
-  useEffect(() => {
-  setCharacterCount(charactersInfo.count)
-  setCharacterPageCount(charactersInfo.pages)
-  }, [charactersInfo])
 
   useEffect(() => {
   setLocationCount(locationInfo.count)
@@ -74,9 +64,7 @@ function App() {
   setEpisodePageCount(episodeInfo.pages)
   }, [episodeInfo])
 
-  useEffect(() => {
-  createCharacterCards()
-  }, [currentCharacters])
+
 
   useEffect(() => {
     createLocationCards()
@@ -86,12 +74,7 @@ function App() {
     createEpisodeCards()
   }, [currentEpisodes])
 
-  const createCharacterCards = () => {
-    const characterCards = currentCharacters.map(character => {
-      return <Character key={character.id} character={character} />
-    })
-    setCharacterCards(characterCards)
-  }
+
 
   const createLocationCards = () => {
     const locationCards = currentLocations.map(location => {
@@ -109,9 +92,12 @@ function App() {
   
   return (
     <div className="App">
-      {/* {characterCards} */}
-      {/* {locationCards} */}
-      {episodeCards}
+      <nav className='navBar'>
+        <NavLink to="/characters">Characters</NavLink>
+      </nav>
+      <Routes>
+        <Route path="/characters" element={<Characters />} />
+      </Routes>
     </div>
   );
 }
