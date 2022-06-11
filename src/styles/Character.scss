@@ -7,4 +7,9 @@ color: black;
         text-align: left;
         display: flex;
     }
+
+    &__image {
+        height: 20rem;
+        width: 20rem;
+    }
 }

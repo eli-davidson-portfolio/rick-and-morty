@@ -4,7 +4,7 @@ const getCharacters = async (charactersIds = "", search = "") => {
         url = `${url}/${charactersIds}`
     } 
     if (search) {
-        url = `${url}/?${search}`
+        url = `${url}/${search}`
     }
    return await fetch(url, {
     method: 'GET',
@@ -13,16 +13,30 @@ const getCharacters = async (charactersIds = "", search = "") => {
     .then(response => response.json())
 }
 
-const getLocations = async (locationIds) => {
-    return await fetch("https://rickandmortyapi.com/api/location", {
+const getLocations = async (locationIds = "", search = "") => {
+    let url = `https://rickandmortyapi.com/api/location`
+    if (locationIds) {
+        url = `${url}/${locationIds}`
+    } 
+    if (search) {
+        url = `${url}/${search}`
+    }
+    return await fetch(url, {
         method: 'GET',
         redirect: 'follow'
         })
         .then(response => response.json())
 }
 
-const getEpisodes = async (episodeIds) => {
-    return await fetch("https://rickandmortyapi.com/api/episode", {
+const getEpisodes = async (episodeIds = "", search = "") => {
+    let url = `https://rickandmortyapi.com/api/episode`
+    if (episodeIds) {
+        url = `${url}/${episodeIds}`
+    } 
+    if (search) {
+        url = `${url}/${search}`
+    }
+    return await fetch(url, {
             method: 'GET',
             redirect: 'follow'
             })

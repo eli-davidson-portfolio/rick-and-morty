@@ -2,9 +2,12 @@
 import React, {useState, useEffect} from "react";
 import {getEpisodes} from "../classes/apiEndpoints"
 import {Episode} from '../components/Episode';
+import {FilterBar} from '../components/FilterBar';
 import '../styles/Episodes.scss';
 
 export function Episodes() {
+  const [view, setView] = useState('episode')
+  const [search, setSearch] = useState('')
   const [episodesInfo, setEpisodesInfo] = useState({})
   const [episodeCount, setEpisodeCount] = useState(0)
   const [episodePageCount, setEpisodePageCount] = useState(0)
@@ -12,7 +15,7 @@ export function Episodes() {
   const [episodeCards, setEpisodeCards] = useState([])
 
   const getEpisodeInfo = async () => {
-    await getEpisodes()
+    await getEpisodes(null, search)
     .then(result => {
       setEpisodesInfo(result.info)
       setCurrentEpisodes(result.results)
@@ -23,6 +26,10 @@ export function Episodes() {
   useEffect(() => {
    getEpisodeInfo()
   }, [])
+
+  useEffect(() => {
+    getEpisodeInfo()
+  }, [search])
 
   useEffect(() => {
     setEpisodeCount(episodesInfo.count)
@@ -40,9 +47,17 @@ export function Episodes() {
     setEpisodeCards(episodeCards)
   }
 
+  const handleSearch = (search) => {
+    console.log("Handle Search", search)
+    setSearch(search)
+  }
+
   return (
+    <>
+    <FilterBar view={view} handleSearch={handleSearch}/>
     <div className="Episodes">
         {episodeCards}
     </div>
+    </>
   )
 }
