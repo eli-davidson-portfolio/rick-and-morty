@@ -4,7 +4,8 @@ import {getCharacters} from "../classes/apiEndpoints"
 import {Character} from '../components/Character';
 import {TitleBar} from '../components/TitleBar';
 import {VarientContainer} from '../components/VarientContainer';
-import '../styles/Characters.scss';
+import '../styles/CharactersProfile.scss';
+import '../styles/TitleBar.scss'
 
 export function CharacterProfile() {
   const [charactersInfo, setCharactersInfo] = useState({})
@@ -29,10 +30,19 @@ console.log(id)
    getCharacterInfo()
   }, [])
 
+  console.log(currentCharacter)
+
   return (
     <div className="CharacterProfile">
-        <TitleBar name={currentCharacter.name} species={currentCharacter.species}/>
-        <Character key={currentCharacter.id} character={currentCharacter} />
+      <div className="currentCharacter">
+        <div className="TitleBar"> 
+              <p>{currentCharacter.name} - {currentCharacter.species}</p> 
+        </div>
+        <img src={currentCharacter.image} alt={currentCharacter.name} />
+        <div className="TitleBar"> 
+              <p>{currentCharacter.status} - {currentCharacter.species}</p> 
+        </div>
+      </div>
       {currentCharacter.name && <VarientContainer id={currentCharacter.id} name={currentCharacter.name}/>}
     </div>
   )

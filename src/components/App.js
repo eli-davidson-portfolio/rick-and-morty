@@ -15,7 +15,7 @@ function App() {
     <NavBar />
       <main className="main">
           <Routes>
-            <Route exact path="/characters" element={<Characters />} />
+            <Route exact path="/" element={<Characters />} />
             <Route path="/episodes" element={<Episodes />} />
             <Route path="/locations" element={<Locations />} />
             <Route path="/characters/:id" element={<CharacterProfile />} />

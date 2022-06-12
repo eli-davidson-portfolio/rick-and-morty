@@ -1,4 +1,62 @@
 .VarientContainer {
-background-color: blue;
-color: white
+position: relative;
+top: 100px;
+height: 100vh;
+width: 300px;
+background-color: black;
+color: white;
+z-index: 50;
+overflow: auto;
+perspective: 10px;
+}
+
+.wrapper {
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+    perspective: 10px;
+}
+
+.characterSmall {
+position: relative;
+display: grid;
+ place-items: center;
+height: 300px;
+transform-style: preserve-3d;
+z-index: -1;
+}
+
+.characterGap {
+position: relative;
+display: grid;
+ place-items: center;
+height: 100px;
+transform-style: preserve-3d;
+z-index: -1;
+}
+
+.characterImageSmall {
+    top:0;
+    z-index: 1;
+    border-radius: 5%;
+    transform: translateZ(-2px) scale(1.1); 
+}
+
+.characterNameSmall {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: absolute;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    top: -100px;
+    z-index: 2;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;;
+    text-shadow: -1px -1px 10px #B2DF27, 2px 2px 3px black;
+    font-weight: 800;
+    z-index: 99
+
 }

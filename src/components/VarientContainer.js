@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {getCharacters} from "../classes/apiEndpoints"
-import {Character} from '../components/Character';
+import {CharacterSmall} from '../components/CharacterSmall';
 import '../styles/VarientContainer.scss'
 
 export function VarientContainer(props) { 
@@ -25,9 +25,10 @@ export function VarientContainer(props) {
   }
 
   const createCharacterCards = () => {
-    const characterCards = currentCharacters.map(character => {
-      if(character.id != id) return <Character key={character.id} character={character} />
+    const allCards = currentCharacters.map(character => {
+      if(character.id != id) return <CharacterSmall key={character.id} character={character} />
     })
+    const characterCards = [...new Set(allCards)];
     setCharacterCards(characterCards)
   }
  
@@ -54,8 +55,8 @@ export function VarientContainer(props) {
  
   return ( 
     <div className="VarientContainer"> 
-      <p>VarientContainer for: {name}</p> 
-      <div className="Characters">
+      <p>Related to: {name}</p> 
+      <div className="wrapper">
             {characterCards}
       </div>
     </div> 
