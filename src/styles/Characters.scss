@@ -1,7 +1,25 @@
 .Characters {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    height: calc(100vh - 8rem);
-    overflow: auto;
+
+    height: 100%;
+    transform-style: preserve-3d;
+
 }
+
+.characterCardsContainer {
+    padding: 5%;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+}
+
+.background {
+    position: absolute;
+    // object-fit:fill;
+    bottom: 0;
+    transform: translateZ(-120px) scale(20);
+}
+
+
+

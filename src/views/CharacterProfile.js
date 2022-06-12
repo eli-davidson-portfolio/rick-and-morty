@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import {getCharacters} from "../classes/apiEndpoints"
 import {Character} from '../components/Character';
 import {TitleBar} from '../components/TitleBar';
+import {VarientContainer} from '../components/VarientContainer';
 import '../styles/Characters.scss';
 
 export function CharacterProfile() {
@@ -32,6 +33,7 @@ console.log(id)
     <div className="CharacterProfile">
         <TitleBar name={currentCharacter.name} species={currentCharacter.species}/>
         <Character key={currentCharacter.id} character={currentCharacter} />
+      {currentCharacter.name && <VarientContainer id={currentCharacter.id} name={currentCharacter.name}/>}
     </div>
   )
 }

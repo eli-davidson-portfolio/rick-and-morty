@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { Parallax } from 'react-parallax';
+import { Background, Parallax } from 'react-parallax';
+import portal from '../assets/portal-rick-and-morty.gif'
 import '../styles/Character.scss'
 
 export function Character(props) { 
@@ -44,34 +45,19 @@ export function Character(props) {
         name: character.origin.name,
       })
     }
- 
   return ( 
+    <>
     <Link to={`/characters/${character.id}`}>
-
       <div className="Character"> 
-        <Parallax className='Character__image' blur={0} bgImage={character.image} bgImageAlt={character.name} strength={50} >
-
-                <p>{character.name}</p>
-
-        </Parallax>
-        {character.id && <div className='Character__information'>
-          <div className='Character__information__left'>
-              <p>id:{character.id}</p> 
-              <p>created:{character.created}</p> 
-              <p>episodes:{character.episode.length}</p> 
-              <p>gender:{character.gender}</p> 
-          </div>
-          <div className='Character__information__right'>
-              <p>location name:{location.name}</p> 
-              <p>location id:{location.id}</p> 
-              <p>origin:{origin.name}</p>
-              <p>origin id:{origin.id}</p> 
-              <p>species:{character.species}</p>
-              <p>type:{character.type}</p> 
-          </div>
-        </div>}
+        <div className="portal">
+          <img className="characterImage" src={character.image} alt={character.name} />
+        </div>
       </div> 
     </Link>
+      <div className="characterName">
+        <p>{character.name}</p>
+      </div>
+    </>
   ); 
 } 
  

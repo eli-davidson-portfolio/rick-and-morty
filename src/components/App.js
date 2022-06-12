@@ -1,25 +1,30 @@
 import React from 'react';
+import { Parallax, Background } from 'react-parallax';
 import { Route, Routes, Switch } from "react-router-dom";
 import { NavBar } from './NavBar'
 import { Characters } from '../views/Characters';
 import { CharacterProfile } from '../views/CharacterProfile';
 import { Episodes } from '../views/Episodes';
 import { Locations } from '../views/Locations';
+import footer from '../assets/foreground.png'
 import '../styles/App.scss';
 
 function App() {
   return (
-    <>
-    <NavBar />
     <div className="App">
-        <Routes>
-          <Route exact path="/characters" element={<Characters />} />
-          <Route path="/episodes" element={<Episodes />} />
-          <Route path="/locations" element={<Locations />} />
-          <Route path="/characters/:id" element={<CharacterProfile />} />
-        </Routes>
+    <NavBar />
+      <main className="main">
+          <Routes>
+            <Route exact path="/characters" element={<Characters />} />
+            <Route path="/episodes" element={<Episodes />} />
+            <Route path="/locations" element={<Locations />} />
+            <Route path="/characters/:id" element={<CharacterProfile />} />
+          </Routes>
+      </main>
+
+      <img className="footer" src={footer} />
+
     </div>
-    </>
   );
 }
 
