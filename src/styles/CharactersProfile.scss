@@ -2,18 +2,24 @@
 height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background-color: aqua;
+    // padding-top: 200px;
+    align-items: flex-start;
+    background: url("https://images.alphacoders.com/876/thumb-1920-876589.jpg");
+    background-position: center;
+    background-size: cover;
     outline: 1px solid white;
     overflow: hidden;
 }
 
 .currentCharacter {
-    margin: 5%;
+    margin-top: 7%;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     // border: 20px solid purple;
     border-radius: 5%;
     overflow: hidden;
+    border: 4px solid #01B5CC;
+box-shadow: 0px 0px 20px #B2DF27
 }

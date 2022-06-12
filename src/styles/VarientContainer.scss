@@ -1,13 +1,14 @@
 .VarientContainer {
 position: relative;
-top: 100px;
-height: 100vh;
+// top: 100px;
+height: 120vh;
 width: 300px;
 background-color: black;
 color: white;
 z-index: 50;
 overflow: auto;
 perspective: 10px;
+transform: rotate(10deg) ;
 }
 
 .wrapper {

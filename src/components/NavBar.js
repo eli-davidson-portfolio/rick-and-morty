@@ -21,13 +21,17 @@ export function NavBar() {
   
   return ( 
       <nav className='NavBar'>
-        <img src={logo}/>
-        <img src={wordsLogo}/>
+        <Link to="/">
+
+
+        <img className='logo' src={logo}/>
+        </Link>
+           <Link to="/">
+        <img className='wordsLogo' src={wordsLogo}/>
+             </Link>
         <div className='linkContainer'>
 
-        <NavLink activeClassName="active" to="/characters">Characters</NavLink>
-        <NavLink activeClassName="active" to="/episodes">Episodes</NavLink>
-        <NavLink activeClassName="active" to="/locations">Locationss</NavLink>
+
         </div>
       </nav>
   ); 
