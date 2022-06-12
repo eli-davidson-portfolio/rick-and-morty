@@ -5,6 +5,7 @@ import {getCharacters} from "../classes/apiEndpoints"
 import {Character} from '../components/Character';
 import {FilterBar} from '../components/FilterBar';
 import background from "../assets/DdssjBiUQAAn6VU.jpeg"
+import footer from '../assets/foreground.png'
 import {PageButtonContainer} from '../components/PageButtonContainer'
 import '../styles/Characters.scss';
 
@@ -103,6 +104,7 @@ export function Characters() {
         <div className="characterCardsContainer">
           {characterCards}
         </div>
+        <img className="footer" src={footer} />
       </div>
     </>
   )

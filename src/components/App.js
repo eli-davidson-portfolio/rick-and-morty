@@ -6,7 +6,7 @@ import { Characters } from '../views/Characters';
 import { CharacterProfile } from '../views/CharacterProfile';
 import { Episodes } from '../views/Episodes';
 import { Locations } from '../views/Locations';
-import footer from '../assets/foreground.png'
+
 import '../styles/App.scss';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           </Routes>
       </main>
 
-      <img className="footer" src={footer} />
+      
 
     </div>
   );

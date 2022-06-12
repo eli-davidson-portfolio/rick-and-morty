@@ -75,14 +75,14 @@
 .characterName {
     position: absolute;
     text-align: center;
-    color: white;
+    color: #01B5CC;;
+    text-shadow: -1px -1px 10px #B2DF27, 2px 2px 3px black;
     font-weight: 800;
     // width: 250px;
     position: relative;
     top: 75px;
     left: -300px;
     transform: translateZ(-10px) scale(2.25);
-    text-shadow: 0 0 10px black;
     z-index: 5;
     animation-name: text;
     animation-duration: 1s;
