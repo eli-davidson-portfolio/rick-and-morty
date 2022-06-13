@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Background, Parallax } from 'react-parallax';
 import portal from '../assets/portal-rick-and-morty.gif'
 import '../styles/VarientContainer.scss'
+import { Character } from './Character';
 
 export function CharacterSmall(props) { 
   const [character, setCharacter] = useState({})
@@ -49,6 +50,7 @@ export function CharacterSmall(props) {
 <>
 
 <div className='characterSmall'>
+
         <img className='characterImageSmall' src={character.image} alt={character.name} />
             <div className="characterNameSmall">
               {character.name}
