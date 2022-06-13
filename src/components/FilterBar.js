@@ -15,14 +15,9 @@ export function FilterBar(props) {
  
   useEffect(() => { 
     setView(props.view)
- 
-    return(() => { 
-    console.log("FilterBar will unmount") 
-    }) 
   }, [])
 
   useEffect(() => { 
-    console.log("Searching", search)
     search && props.handleSearch(search)
     clearSearch()
   }, [search])
@@ -106,18 +101,18 @@ export function FilterBar(props) {
         <option value="dead">Dead</option>
         <option value="unknown">Unknown</option>
       </select>}
-{(view === "character") && <input 
+{/* {(view === "character") && <input 
       type="text" 
       name='species'
       placeholder='Species' 
       value={species} 
-      onChange={handleChange} />}
-{(view !== "episode") && <input 
+      onChange={handleChange} />} */}
+{/* {(view !== "episode") && <input 
       type="text" 
       name='type'
       placeholder='Type' 
       value={type} 
-      onChange={handleChange} />}
+      onChange={handleChange} />} */}
 {(view === "character") && <select 
       name='gender'
       placeholder='Gender' 

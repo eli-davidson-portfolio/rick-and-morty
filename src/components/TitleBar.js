@@ -9,7 +9,7 @@ export function TitleBar(props) {
     props.name && setName(props.name)
     props.species && setSpecies(props.species)
   }, [props])
- console.log(name, species)
+
   return ( 
     <div className="TitleBar"> 
       <p>{name} - {species}</p> 

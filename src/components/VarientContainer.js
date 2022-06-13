@@ -13,7 +13,6 @@ export function VarientContainer(props) {
   const getVatientInfo = async () => {
     const names = name.split(" ")
     for(let i in names) {
-      console.log("searching for:", names[i])
       await getCharacters(null, `?name=${names[i]}`)
       .then(result => {
         setCharactersInfo(result.info)
@@ -33,23 +32,16 @@ export function VarientContainer(props) {
   }
  
   useEffect(() => { 
-    console.log("props for varient Container", props)
-    console.log("varient Container for", props.name)
     setID(props.id)
     setName(props.name)
- 
-    return(() => { 
-    console.log("VarientContainer will unmount") 
-    }) 
+
   }, []) 
  
   useEffect(() => { 
-    name && console.log("VarientContainer name did update", name) 
     name && getVatientInfo()
   }, [name])
   
   useEffect(() => { 
-    console.log("VarientContainer characterInfo did update", charactersInfo) 
     createCharacterCards()
   }, [charactersInfo]) 
  

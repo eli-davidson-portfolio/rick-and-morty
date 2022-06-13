@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { getCharacters } from '../classes/apiEndpoints';
-import { Character } from './Character';
+import { CharacterSmall } from './CharacterSmall';
 import '../styles/Episode.scss'
+import tv from "../assets/tv.png"
 
 export function Episode(props) { 
   let {
@@ -60,21 +61,22 @@ export function Episode(props) {
 
   const createCharacterCards = () => {
     const characterCards = currentCharacters.map(character => {
-      return <Character key={character.id} character={character} />
+      return <CharacterSmall key={character.id} character={character} />
     })
     setCharacterCards(characterCards)
   }
  
   return ( 
     <div className="Episode"> 
-      <p>Air Date:{air_date}</p> 
-      <p>created:{created}</p>
-      <p>season:{season}</p> 
-      <p>episode:{episode}</p> 
-      <p>id:{id}</p> 
-      <p>name:{name}</p> 
-      <p>url:{url}</p> 
-      <p>Characters:{characterCards}</p> 
+      <div className='static'>
+        <div className='screen'>
+
+      <p>S:{season} | E:{episode}</p> 
+      <p className='episodeName'>{name}</p> 
+      <p>{air_date}</p> 
+        </div>
+      </div>
+
     </div> 
   ); 
 } 

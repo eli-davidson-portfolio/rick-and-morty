@@ -28,10 +28,13 @@ export function Characters() {
     .catch(error => console.log('error', error));
   }
 
-  const getCharacterSearch = async (search) => {
+  const getCharacterSearch = async () => {
+    if (!search) return
+    console.log("checking Search", search)
     await getCharacters(null, search)
     .then(result => {
-      setCurrentCharacters(result)
+      console.log(result)
+      setCurrentCharacters(result.results)
     })
     .catch(error => console.log('error', error));
   }
@@ -55,7 +58,6 @@ export function Characters() {
   }, [])
 
   useEffect(() => {
-    console.log(charactersInfo)
     charactersInfo && setCharacterCount(charactersInfo.count)
     charactersInfo && setCharacterPageCount(charactersInfo.pages)
     charactersInfo && parseCurrentPage(charactersInfo.prev)
@@ -70,6 +72,7 @@ export function Characters() {
   }, [currentCharacters])
 
   useEffect(() => {
+    console.log("searching more", search)
     getCharacterSearch()
   }, [search])
 
@@ -91,7 +94,7 @@ export function Characters() {
   }
 
   const handleSearch = (search) => {
-    console.log("Handle Search", search)
+    console.log("searching", search)
     setSearch(search)
   }
 

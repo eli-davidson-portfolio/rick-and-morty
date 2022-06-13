@@ -47,7 +47,6 @@ export function Locations() {
   }
 
   const handleSearch = (search) => {
-    console.log("Handle Search", search)
     setSearch(search)
   }
 

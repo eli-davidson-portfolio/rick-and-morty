@@ -12,10 +12,7 @@ import {
 
 export function NavBar() { 
   useEffect(() => { 
-    console.log("NavBar did mount") 
- 
     return(() => { 
-    console.log("NavBar will unmount") 
     }) 
   }, []) 
   
